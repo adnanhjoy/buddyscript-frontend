@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const LayoutMiddle: React.FC = () => {
@@ -18,7 +20,7 @@ const LayoutMiddle: React.FC = () => {
                             <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col">
                                 <div className="_feed_inner_profile_story _b_radious6 ">
                                     <div className="_feed_inner_profile_story_image">
-                                        <img src="/images/card_ppl1.png" alt="Image" className="_profile_story_img" />
+                                        <Image height={1000} width={1000} src="/images/card_ppl1.png" alt="Image" className="_profile_story_img" />
                                         <div className="_feed_inner_story_txt">
                                             <div className="_feed_inner_story_btn">
                                                 <button className="_feed_inner_story_btn_link">
@@ -35,12 +37,12 @@ const LayoutMiddle: React.FC = () => {
                             <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col">
                                 <div className="_feed_inner_public_story _b_radious6">
                                     <div className="_feed_inner_public_story_image">
-                                        <img src="/images/card_ppl2.png" alt="Image" className="_public_story_img" />
+                                        <Image height={1000} width={1000} src="/images/card_ppl2.png" alt="Image" className="_public_story_img" />
                                         <div className="_feed_inner_pulic_story_txt">
                                             <p className="_feed_inner_pulic_story_para">Ryan Roslansky</p>
                                         </div>
                                         <div className="_feed_inner_public_mini">
-                                            <img src="/images/mini_pic.png" alt="Image" className="_public_mini_img" />
+                                            <Image height={1000} width={1000} src="/images/mini_pic.png" alt="Image" className="_public_mini_img" />
                                         </div>
                                     </div>
                                 </div>
@@ -48,12 +50,12 @@ const LayoutMiddle: React.FC = () => {
                             <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 _custom_mobile_none">
                                 <div className="_feed_inner_public_story _b_radious6">
                                     <div className="_feed_inner_public_story_image">
-                                        <img src="/images/card_ppl3.png" alt="Image" className="_public_story_img" />
+                                        <Image height={1000} width={1000} src="/images/card_ppl3.png" alt="Image" className="_public_story_img" />
                                         <div className="_feed_inner_pulic_story_txt">
                                             <p className="_feed_inner_pulic_story_para">Ryan Roslansky</p>
                                         </div>
                                         <div className="_feed_inner_public_mini">
-                                            <img src="/images/mini_pic.png" alt="Image" className="_public_mini_img" />
+                                            <Image height={1000} width={1000} src="/images/mini_pic.png" alt="Image" className="_public_mini_img" />
                                         </div>
                                     </div>
                                 </div>
@@ -61,12 +63,12 @@ const LayoutMiddle: React.FC = () => {
                             <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 _custom_none">
                                 <div className="_feed_inner_public_story _b_radious6">
                                     <div className="_feed_inner_public_story_image">
-                                        <img src="/images/card_ppl4.png" alt="Image" className="_public_story_img" />
+                                        <Image height={1000} width={1000} src="/images/card_ppl4.png" alt="Image" className="_public_story_img" />
                                         <div className="_feed_inner_pulic_story_txt">
                                             <p className="_feed_inner_pulic_story_para">Ryan Roslansky</p>
                                         </div>
                                         <div className="_feed_inner_public_mini">
-                                            <img src="/images/mini_pic.png" alt="Image" className="_public_mini_img" />
+                                            <Image height={1000} width={1000} src="/images/mini_pic.png" alt="Image" className="_public_mini_img" />
                                         </div>
                                     </div>
                                 </div>
@@ -79,9 +81,9 @@ const LayoutMiddle: React.FC = () => {
                         <div className="_feed_inner_ppl_card_area">
                             <ul className="_feed_inner_ppl_card_area_list">
                                 <li className="_feed_inner_ppl_card_area_item">
-                                    <a href="#0" className="_feed_inner_ppl_card_area_link">
+                                    <Link href="#0" className="_feed_inner_ppl_card_area_link">
                                         <div className="_feed_inner_ppl_card_area_story">
-                                            <img src="/images/mobile_story_img.png" alt="Image" className="_card_story_img" />
+                                            <Image height={1000} width={1000} src="/images/mobile_story_img.png" alt="Image" className="_card_story_img" />
                                             <div className="_feed_inner_ppl_btn">
                                                 <button className="_feed_inner_ppl_btn_link" type="button">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
@@ -91,68 +93,68 @@ const LayoutMiddle: React.FC = () => {
                                             </div>
                                         </div>
                                         <p className="_feed_inner_ppl_card_area_link_txt">Your Story</p>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="_feed_inner_ppl_card_area_item">
-                                    <a href="#0" className="_feed_inner_ppl_card_area_link">
+                                    <Link href="#0" className="_feed_inner_ppl_card_area_link">
                                         <div className="_feed_inner_ppl_card_area_story_active">
-                                            <img src="/images/mobile_story_img1.png" alt="Image" className="_card_story_img1" />
+                                            <Image height={1000} width={1000} src="/images/mobile_story_img1.png" alt="Image" className="_card_story_img1" />
                                         </div>
                                         <p className="_feed_inner_ppl_card_area_txt">Ryan...</p>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="_feed_inner_ppl_card_area_item">
-                                    <a href="#0" className="_feed_inner_ppl_card_area_link">
+                                    <Link href="#0" className="_feed_inner_ppl_card_area_link">
                                         <div className="_feed_inner_ppl_card_area_story_inactive">
-                                            <img src="/images/mobile_story_img2.png" alt="Image" className="_card_story_img1" />
+                                            <Image height={1000} width={1000} src="/images/mobile_story_img2.png" alt="Image" className="_card_story_img1" />
                                         </div>
                                         <p className="_feed_inner_ppl_card_area_txt">Ryan...</p>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="_feed_inner_ppl_card_area_item">
-                                    <a href="#0" className="_feed_inner_ppl_card_area_link">
-                                        <a href="#0" className="_feed_inner_ppl_card_area_link">
+                                    <Link href="#0" className="_feed_inner_ppl_card_area_link">
+                                        <Link href="#0" className="_feed_inner_ppl_card_area_link">
                                             <div className="_feed_inner_ppl_card_area_story_active">
-                                                <img src="/images/mobile_story_img1.png" alt="Image" className="_card_story_img1" />
+                                                <Image height={1000} width={1000} src="/images/mobile_story_img1.png" alt="Image" className="_card_story_img1" />
                                             </div>
                                             <p className="_feed_inner_ppl_card_area_txt">Ryan...</p>
-                                        </a>
-                                    </a>
+                                        </Link>
+                                    </Link>
                                 </li>
                                 <li className="_feed_inner_ppl_card_area_item">
-                                    <a href="#0" className="_feed_inner_ppl_card_area_link">
+                                    <Link href="#0" className="_feed_inner_ppl_card_area_link">
                                         <div className="_feed_inner_ppl_card_area_story_inactive">
-                                            <img src="/images/mobile_story_img2.png" alt="Image" className="_card_story_img1" />
+                                            <Image height={1000} width={1000} src="/images/mobile_story_img2.png" alt="Image" className="_card_story_img1" />
                                         </div>
                                         <p className="_feed_inner_ppl_card_area_txt">Ryan...</p>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="_feed_inner_ppl_card_area_item">
-                                    <a href="#0" className="_feed_inner_ppl_card_area_link">
-                                        <a href="#0" className="_feed_inner_ppl_card_area_link">
+                                    <Link href="#0" className="_feed_inner_ppl_card_area_link">
+                                        <Link href="#0" className="_feed_inner_ppl_card_area_link">
                                             <div className="_feed_inner_ppl_card_area_story_active">
-                                                <img src="/images/mobile_story_img1.png" alt="Image" className="_card_story_img1" />
+                                                <Image height={1000} width={1000} src="/images/mobile_story_img1.png" alt="Image" className="_card_story_img1" />
                                             </div>
                                             <p className="_feed_inner_ppl_card_area_txt">Ryan...</p>
-                                        </a>
-                                    </a>
+                                        </Link>
+                                    </Link>
                                 </li>
                                 {/* <!----> */}
                                 <li className="_feed_inner_ppl_card_area_item">
-                                    <a href="#0" className="_feed_inner_ppl_card_area_link">
+                                    <Link href="#0" className="_feed_inner_ppl_card_area_link">
                                         <div className="_feed_inner_ppl_card_area_story">
-                                            <img src="/images/mobile_story_img.png" alt="Image" className="_card_story_img" />
+                                            <Image height={1000} width={1000} src="/images/mobile_story_img.png" alt="Image" className="_card_story_img" />
                                         </div>
                                         <p className="_feed_inner_ppl_card_area_txt">Ryan...</p>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="_feed_inner_ppl_card_area_item">
-                                    <a href="#0" className="_feed_inner_ppl_card_area_link">
+                                    <Link href="#0" className="_feed_inner_ppl_card_area_link">
                                         <div className="_feed_inner_ppl_card_area_story_active">
-                                            <img src="/images/mobile_story_img1.png" alt="Image" className="_card_story_img1" />
+                                            <Image height={1000} width={1000} src="/images/mobile_story_img1.png" alt="Image" className="_card_story_img1" />
                                         </div>
                                         <p className="_feed_inner_ppl_card_area_txt">Ryan...</p>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -161,7 +163,7 @@ const LayoutMiddle: React.FC = () => {
                     <div className="_feed_inner_text_area  _b_radious6 _padd_b24 _padd_t24 _padd_r24 _padd_l24 _mar_b16">
                         <div className="_feed_inner_text_area_box">
                             <div className="_feed_inner_text_area_box_image">
-                                <img src="/images/txt_img.png" alt="Image" className="_txt_img" />
+                                <Image height={1000} width={1000} src="/images/txt_img.png" alt="Image" className="_txt_img" />
                             </div>
                             <div className="form-floating _feed_inner_text_area_box_form ">
                                 <textarea className="form-control _textarea" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
@@ -266,12 +268,12 @@ const LayoutMiddle: React.FC = () => {
                             <div className="_feed_inner_timeline_post_top">
                                 <div className="_feed_inner_timeline_post_box">
                                     <div className="_feed_inner_timeline_post_box_image">
-                                        <img src="/images/post_img.png" alt="" className="_post_img" />
+                                        <Image height={1000} width={1000} src="/images/post_img.png" alt="" className="_post_img" />
                                     </div>
                                     <div className="_feed_inner_timeline_post_box_txt">
                                         <h4 className="_feed_inner_timeline_post_box_title">Karim Saif</h4>
                                         <p className="_feed_inner_timeline_post_box_para">5 minute ago .
-                                            <a href="#0">Public</a>
+                                            <Link href="#0">Public</Link>
                                         </p>
                                     </div>
                                 </div>
@@ -289,37 +291,37 @@ const LayoutMiddle: React.FC = () => {
                                     <div id="_timeline_drop" className="_feed_timeline_dropdown _timeline_dropdown">
                                         <ul className="_feed_timeline_dropdown_list">
                                             <li className="_feed_timeline_dropdown_item">
-                                                <a href="#0" className="_feed_timeline_dropdown_link">
+                                                <Link href="#0" className="_feed_timeline_dropdown_link">
                                                     <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
                                                             <path stroke="#1890FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M14.25 15.75L9 12l-5.25 3.75v-12a1.5 1.5 0 011.5-1.5h7.5a1.5 1.5 0 011.5 1.5v12z" />
                                                         </svg>
                                                     </span>
                                                     Save Post
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className="_feed_timeline_dropdown_item">
-                                                <a href="#0" className="_feed_timeline_dropdown_link">
+                                                <Link href="#0" className="_feed_timeline_dropdown_link">
                                                     <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" fill="none" viewBox="0 0 20 22">
                                                             <path fill="#377DFF" fill-rule="evenodd" d="M7.547 19.55c.533.59 1.218.915 1.93.915.714 0 1.403-.324 1.938-.916a.777.777 0 011.09-.056c.318.284.344.77.058 1.084-.832.917-1.927 1.423-3.086 1.423h-.002c-1.155-.001-2.248-.506-3.077-1.424a.762.762 0 01.057-1.083.774.774 0 011.092.057zM9.527 0c4.58 0 7.657 3.543 7.657 6.85 0 1.702.436 2.424.899 3.19.457.754.976 1.612.976 3.233-.36 4.14-4.713 4.478-9.531 4.478-4.818 0-9.172-.337-9.528-4.413-.003-1.686.515-2.544.973-3.299l.161-.27c.398-.679.737-1.417.737-2.918C1.871 3.543 4.948 0 9.528 0zm0 1.535c-3.6 0-6.11 2.802-6.11 5.316 0 2.127-.595 3.11-1.12 3.978-.422.697-.755 1.247-.755 2.444.173 1.93 1.455 2.944 7.986 2.944 6.494 0 7.817-1.06 7.988-3.01-.003-1.13-.336-1.681-.757-2.378-.526-.868-1.12-1.851-1.12-3.978 0-2.514-2.51-5.316-6.111-5.316z" clip-rule="evenodd" />
                                                         </svg>
                                                     </span>
                                                     Turn On Notification
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className="_feed_timeline_dropdown_item">
-                                                <a href="#0" className="_feed_timeline_dropdown_link">
+                                                <Link href="#0" className="_feed_timeline_dropdown_link">
                                                     <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
                                                             <path stroke="#1890FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M14.25 2.25H3.75a1.5 1.5 0 00-1.5 1.5v10.5a1.5 1.5 0 001.5 1.5h10.5a1.5 1.5 0 001.5-1.5V3.75a1.5 1.5 0 00-1.5-1.5zM6.75 6.75l4.5 4.5M11.25 6.75l-4.5 4.5" />
                                                         </svg>
                                                     </span>
                                                     Hide
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className="_feed_timeline_dropdown_item">
-                                                <a href="#0" className="_feed_timeline_dropdown_link">
+                                                <Link href="#0" className="_feed_timeline_dropdown_link">
                                                     <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
                                                             <path stroke="#1890FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M8.25 3H3a1.5 1.5 0 00-1.5 1.5V15A1.5 1.5 0 003 16.5h10.5A1.5 1.5 0 0015 15V9.75" />
@@ -327,17 +329,17 @@ const LayoutMiddle: React.FC = () => {
                                                         </svg>
                                                     </span>
                                                     Edit Post
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className="_feed_timeline_dropdown_item">
-                                                <a href="#0" className="_feed_timeline_dropdown_link">
+                                                <Link href="#0" className="_feed_timeline_dropdown_link">
                                                     <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
                                                             <path stroke="#1890FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M2.25 4.5h13.5M6 4.5V3a1.5 1.5 0 011.5-1.5h3A1.5 1.5 0 0112 3v1.5m2.25 0V15a1.5 1.5 0 01-1.5 1.5h-7.5a1.5 1.5 0 01-1.5-1.5V4.5h10.5zM7.5 8.25v4.5M10.5 8.25v4.5" />
                                                         </svg>
                                                     </span>
                                                     Delete Post
-                                                </a>
+                                                </Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -345,21 +347,21 @@ const LayoutMiddle: React.FC = () => {
                             </div>
                             <h4 className="_feed_inner_timeline_post_title">-Healthy Tracking App</h4>
                             <div className="_feed_inner_timeline_image">
-                                <img src="/images/timeline_img.png" alt="" className="_time_img" />
+                                <Image height={1000} width={1000} src="/images/timeline_img.png" alt="" className="_time_img" />
                             </div>
                         </div>
                         <div className="_feed_inner_timeline_total_reacts _padd_r24 _padd_l24 _mar_b26">
                             <div className="_feed_inner_timeline_total_reacts_image">
-                                <img src="/images/react_img1.png" alt="Image" className="_react_img1" />
-                                <img src="/images/react_img2.png" alt="Image" className="_react_img" />
-                                <img src="/images/react_img3.png" alt="Image" className="_react_img _rect_img_mbl_none" />
-                                <img src="/images/react_img4.png" alt="Image" className="_react_img _rect_img_mbl_none" />
-                                <img src="/images/react_img5.png" alt="Image" className="_react_img _rect_img_mbl_none" />
+                                <Image height={1000} width={1000} src="/images/react_img1.png" alt="Image" className="_react_img1" />
+                                <Image height={1000} width={1000} src="/images/react_img2.png" alt="Image" className="_react_img" />
+                                <Image height={1000} width={1000} src="/images/react_img3.png" alt="Image" className="_react_img _rect_img_mbl_none" />
+                                <Image height={1000} width={1000} src="/images/react_img4.png" alt="Image" className="_react_img _rect_img_mbl_none" />
+                                <Image height={1000} width={1000} src="/images/react_img5.png" alt="Image" className="_react_img _rect_img_mbl_none" />
                                 <p className="_feed_inner_timeline_total_reacts_para">9+</p>
                             </div>
                             <div className="_feed_inner_timeline_total_reacts_txt">
                                 <p className="_feed_inner_timeline_total_reacts_para1">
-                                    <a href="#0"><span>12</span> Comment</a>
+                                    <Link href="#0"><span>12</span> Comment</Link>
                                 </p>
                                 <p className="_feed_inner_timeline_total_reacts_para2"><span>122</span> Share</p>
                             </div>
@@ -402,7 +404,7 @@ const LayoutMiddle: React.FC = () => {
                                 <form className="_feed_inner_comment_box_form">
                                     <div className="_feed_inner_comment_box_content">
                                         <div className="_feed_inner_comment_box_content_image">
-                                            <img src="/images/comment_img.png" alt="" className="_comment_img" />
+                                            <Image height={1000} width={1000} src="/images/comment_img.png" alt="" className="_comment_img" />
                                         </div>
                                         <div className="_feed_inner_comment_box_content_txt">
                                             <textarea className="form-control _comment_textarea" placeholder="Write a comment" id="floatingTextarea2"></textarea>
@@ -429,17 +431,17 @@ const LayoutMiddle: React.FC = () => {
                             </div>
                             <div className="_comment_main">
                                 <div className="_comment_image">
-                                    <a href="profile.html" className="_comment_image_link">
-                                        <img src="/images/txt_img.png" alt="" className="_comment_img1" />
-                                    </a>
+                                    <Link href="profile.html" className="_comment_image_link">
+                                        <Image height={1000} width={1000} src="/images/txt_img.png" alt="" className="_comment_img1" />
+                                    </Link>
                                 </div>
                                 <div className="_comment_area">
                                     <div className="_comment_details">
                                         <div className="_comment_details_top">
                                             <div className="_comment_name">
-                                                <a href="profile.html ">
+                                                <Link href="profile.html ">
                                                     <h4 className="_comment_name_title">Radovan SkillArena</h4>
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                         <div className="_comment_status">
@@ -473,7 +475,7 @@ const LayoutMiddle: React.FC = () => {
                                         <form className="_feed_inner_comment_box_form">
                                             <div className="_feed_inner_comment_box_content">
                                                 <div className="_feed_inner_comment_box_content_image">
-                                                    <img src="/images/comment_img.png" alt="" className="_comment_img" />
+                                                    <Image height={1000} width={1000} src="/images/comment_img.png" alt="" className="_comment_img" />
                                                 </div>
                                                 <div className="_feed_inner_comment_box_content_txt">
                                                     <textarea className="form-control _comment_textarea" placeholder="Write a comment" id="floatingTextarea2"></textarea>
@@ -502,12 +504,12 @@ const LayoutMiddle: React.FC = () => {
                             <div className="_feed_inner_timeline_post_top">
                                 <div className="_feed_inner_timeline_post_box">
                                     <div className="_feed_inner_timeline_post_box_image">
-                                        <img src="/images/post_img.png" alt="" className="_post_img" />
+                                        <Image height={1000} width={1000} src="/images/post_img.png" alt="" className="_post_img" />
                                     </div>
                                     <div className="_feed_inner_timeline_post_box_txt">
                                         <h4 className="_feed_inner_timeline_post_box_title">Karim Saif</h4>
                                         <p className="_feed_inner_timeline_post_box_para">5 minute ago .
-                                            <a href="#0">Public</a>
+                                            <Link href="#0">Public</Link>
                                         </p>
                                     </div>
                                 </div>
@@ -525,37 +527,37 @@ const LayoutMiddle: React.FC = () => {
                                     <div className="_feed_timeline_dropdown">
                                         <ul className="_feed_timeline_dropdown_list">
                                             <li className="_feed_timeline_dropdown_item">
-                                                <a href="#0" className="_feed_timeline_dropdown_link">
+                                                <Link href="#0" className="_feed_timeline_dropdown_link">
                                                     <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
                                                             <path stroke="#1890FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M14.25 15.75L9 12l-5.25 3.75v-12a1.5 1.5 0 011.5-1.5h7.5a1.5 1.5 0 011.5 1.5v12z" />
                                                         </svg>
                                                     </span>
                                                     Save Post
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className="_feed_timeline_dropdown_item">
-                                                <a href="#0" className="_feed_timeline_dropdown_link">
+                                                <Link href="#0" className="_feed_timeline_dropdown_link">
                                                     <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" fill="none" viewBox="0 0 20 22">
                                                             <path fill="#377DFF" fill-rule="evenodd" d="M7.547 19.55c.533.59 1.218.915 1.93.915.714 0 1.403-.324 1.938-.916a.777.777 0 011.09-.056c.318.284.344.77.058 1.084-.832.917-1.927 1.423-3.086 1.423h-.002c-1.155-.001-2.248-.506-3.077-1.424a.762.762 0 01.057-1.083.774.774 0 011.092.057zM9.527 0c4.58 0 7.657 3.543 7.657 6.85 0 1.702.436 2.424.899 3.19.457.754.976 1.612.976 3.233-.36 4.14-4.713 4.478-9.531 4.478-4.818 0-9.172-.337-9.528-4.413-.003-1.686.515-2.544.973-3.299l.161-.27c.398-.679.737-1.417.737-2.918C1.871 3.543 4.948 0 9.528 0zm0 1.535c-3.6 0-6.11 2.802-6.11 5.316 0 2.127-.595 3.11-1.12 3.978-.422.697-.755 1.247-.755 2.444.173 1.93 1.455 2.944 7.986 2.944 6.494 0 7.817-1.06 7.988-3.01-.003-1.13-.336-1.681-.757-2.378-.526-.868-1.12-1.851-1.12-3.978 0-2.514-2.51-5.316-6.111-5.316z" clip-rule="evenodd" />
                                                         </svg>
                                                     </span>
                                                     Turn On Notification
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className="_feed_timeline_dropdown_item">
-                                                <a href="#0" className="_feed_timeline_dropdown_link">
+                                                <Link href="#0" className="_feed_timeline_dropdown_link">
                                                     <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
                                                             <path stroke="#1890FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M14.25 2.25H3.75a1.5 1.5 0 00-1.5 1.5v10.5a1.5 1.5 0 001.5 1.5h10.5a1.5 1.5 0 001.5-1.5V3.75a1.5 1.5 0 00-1.5-1.5zM6.75 6.75l4.5 4.5M11.25 6.75l-4.5 4.5" />
                                                         </svg>
                                                     </span>
                                                     Hide
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className="_feed_timeline_dropdown_item">
-                                                <a href="#0" className="_feed_timeline_dropdown_link">
+                                                <Link href="#0" className="_feed_timeline_dropdown_link">
                                                     <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
                                                             <path stroke="#1890FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M8.25 3H3a1.5 1.5 0 00-1.5 1.5V15A1.5 1.5 0 003 16.5h10.5A1.5 1.5 0 0015 15V9.75" />
@@ -563,17 +565,17 @@ const LayoutMiddle: React.FC = () => {
                                                         </svg>
                                                     </span>
                                                     Edit Post
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className="_feed_timeline_dropdown_item">
-                                                <a href="#0" className="_feed_timeline_dropdown_link">
+                                                <Link href="#0" className="_feed_timeline_dropdown_link">
                                                     <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
                                                             <path stroke="#1890FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M2.25 4.5h13.5M6 4.5V3a1.5 1.5 0 011.5-1.5h3A1.5 1.5 0 0112 3v1.5m2.25 0V15a1.5 1.5 0 01-1.5 1.5h-7.5a1.5 1.5 0 01-1.5-1.5V4.5h10.5zM7.5 8.25v4.5M10.5 8.25v4.5" />
                                                         </svg>
                                                     </span>
                                                     Delete Post
-                                                </a>
+                                                </Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -581,16 +583,16 @@ const LayoutMiddle: React.FC = () => {
                             </div>
                             <h4 className="_feed_inner_timeline_post_title">-Healthy Tracking App</h4>
                             <div className="_feed_inner_timeline_image">
-                                <img src="/images/timeline_img.png" alt="" className="_time_img" />
+                                <Image height={1000} width={1000} src="/images/timeline_img.png" alt="" className="_time_img" />
                             </div>
                         </div>
                         <div className="_feed_inner_timeline_total_reacts _padd_r24 _padd_l24 _mar_b26">
                             <div className="_feed_inner_timeline_total_reacts_image">
-                                <img src="/images/react_img1.png" alt="Image" className="_react_img1" />
-                                <img src="/images/react_img2.png" alt="Image" className="_react_img" />
-                                <img src="/images/react_img3.png" alt="Image" className="_react_img _rect_img_mbl_none" />
-                                <img src="/images/react_img4.png" alt="Image" className="_react_img _rect_img_mbl_none" />
-                                <img src="/images/react_img5.png" alt="Image" className="_react_img _rect_img_mbl_none" />
+                                <Image height={1000} width={1000} src="/images/react_img1.png" alt="Image" className="_react_img1" />
+                                <Image height={1000} width={1000} src="/images/react_img2.png" alt="Image" className="_react_img" />
+                                <Image height={1000} width={1000} src="/images/react_img3.png" alt="Image" className="_react_img _rect_img_mbl_none" />
+                                <Image height={1000} width={1000} src="/images/react_img4.png" alt="Image" className="_react_img _rect_img_mbl_none" />
+                                <Image height={1000} width={1000} src="/images/react_img5.png" alt="Image" className="_react_img _rect_img_mbl_none" />
                                 <p className="_feed_inner_timeline_total_reacts_para">9+</p>
                             </div>
                             <div className="_feed_inner_timeline_total_reacts_txt">
@@ -637,7 +639,7 @@ const LayoutMiddle: React.FC = () => {
                                 <form className="_feed_inner_comment_box_form">
                                     <div className="_feed_inner_comment_box_content">
                                         <div className="_feed_inner_comment_box_content_image">
-                                            <img src="/images/comment_img.png" alt="" className="_comment_img" />
+                                            <Image height={1000} width={1000} src="/images/comment_img.png" alt="" className="_comment_img" />
                                         </div>
                                         <div className="_feed_inner_comment_box_content_txt">
                                             <textarea className="form-control _comment_textarea" placeholder="Write a comment" id="floatingTextarea1"></textarea>
@@ -664,17 +666,17 @@ const LayoutMiddle: React.FC = () => {
                             </div>
                             <div className="_comment_main">
                                 <div className="_comment_image">
-                                    <a href="profile.html" className="_comment_image_link">
-                                        <img src="/images/txt_img.png" alt="" className="_comment_img1" />
-                                    </a>
+                                    <Link href="profile.html" className="_comment_image_link">
+                                        <Image height={1000} width={1000} src="/images/txt_img.png" alt="" className="_comment_img1" />
+                                    </Link>
                                 </div>
                                 <div className="_comment_area">
                                     <div className="_comment_details">
                                         <div className="_comment_details_top">
                                             <div className="_comment_name">
-                                                <a href="profile.html ">
+                                                <Link href="profile.html ">
                                                     <h4 className="_comment_name_title">Radovan SkillArena</h4>
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                         <div className="_comment_status">
@@ -708,7 +710,7 @@ const LayoutMiddle: React.FC = () => {
                                         <form className="_feed_inner_comment_box_form">
                                             <div className="_feed_inner_comment_box_content">
                                                 <div className="_feed_inner_comment_box_content_image">
-                                                    <img src="/images/comment_img.png" alt="" className="_comment_img" />
+                                                    <Image height={1000} width={1000} src="/images/comment_img.png" alt="" className="_comment_img" />
                                                 </div>
                                                 <div className="_feed_inner_comment_box_content_txt">
                                                     <textarea className="form-control _comment_textarea" placeholder="Write a comment" id="floatingTextarea2"></textarea>

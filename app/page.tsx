@@ -14,24 +14,15 @@ export default function Home() {
         <DesktopMenu />
         <MobileMenu />
         <MobileBottomNavigation />
-        {/* <!-- Mobile Bottom Navigation End --> */}
-        {/* <!-- Main Layout Structure --> */}
         <div className="container _custom_container">
           <div className="_layout_inner_wrap">
             <div className="row">
-              {/* <!-- Left Sidebar --> */}
               <LeftSidebar />
-              {/* <!-- Left Sidebar --> */}
-              {/* <!-- Layout Middle --> */}
               <LayoutMiddle />
-              {/* <!-- Layout Middle --> */}
-              {/* <!-- Right Sidebar --> */}
               <RightSidebar />
-              {/* <!-- Right Sidebar --> */}
             </div>
           </div>
         </div>
-        {/* <!-- Main Layout Structure --> */}
       </div>
     </div>
   );
