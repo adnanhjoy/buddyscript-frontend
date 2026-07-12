@@ -1,8 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { getCurrentUser } from '@/lib/user/userApi';
+import LogoutButton from '@/components/form/LogoutButton';
 
-const DesktopMenu: React.FC = () => {
+const DesktopMenu: React.FC = async () => {
+    const user = await getCurrentUser();
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light _header_nav _padd_t10">
             <div className="container _custom_container">
@@ -423,7 +427,7 @@ const DesktopMenu: React.FC = () => {
                             <Image height={1000} width={1000} src="/images/profile.png" alt="Image" className="_nav_profile_img" />
                         </div>
                         <div className="_header_nav_dropdown">
-                            <p className="_header_nav_para">Dylan Field</p>
+                            <p className="_header_nav_para">{user?.data?.firstName} {user?.data?.lastName}</p>
                             <button id="_profile_drop_show_btn" className="_header_nav_dropdown_btn _dropdown_toggle" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" fill="none" viewBox="0 0 10 6">
                                     <path fill="#112032" d="M5 5l.354.354L5 5.707l-.354-.353L5 5zm4.354-3.646l-4 4-.708-.708 4-4 .708.708zm-4.708 4l-4-4 .708-.708 4 4-.708.708z" />
@@ -437,7 +441,7 @@ const DesktopMenu: React.FC = () => {
                                     <Image height={1000} width={1000} src="/images/profile.png" alt="Image" className="_nav_drop_img" />
                                 </div>
                                 <div className="_nav_profile_dropdown_info_txt">
-                                    <h4 className="_nav_dropdown_title">Dylan Field</h4>
+                                    <h4 className="_nav_dropdown_title">{user?.data?.firstName} {user?.data?.lastName}</h4>
                                     <Link href="profile.html" className="_nav_drop_profile">
                                         View Profile
                                     </Link>
@@ -481,21 +485,7 @@ const DesktopMenu: React.FC = () => {
                                     </Link>
                                 </li>
                                 <li className="_nav_dropdown_list_item">
-                                    <Link href="#0" className="_nav_dropdown_link">
-                                        <div className="_nav_drop_info">
-                                            <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none" viewBox="0 0 19 19">
-                                                    <path stroke="#377DFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.667 18H2.889A1.889 1.889 0 011 16.111V2.89A1.889 1.889 0 012.889 1h3.778M13.277 14.222L18 9.5l-4.723-4.722M18 9.5H6.667" />
-                                                </svg>
-                                            </span>
-                                            Log Out
-                                        </div>
-                                        <button type="submit" className="_nav_drop_btn_link">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" fill="none" viewBox="0 0 6 10">
-                                                <path fill="#112032" d="M5 5l.354.354L5.707 5l-.353-.354L5 5zM1.354 9.354l4-4-.708-.708-4 4 .708.708zm4-4.708l-4-4-.708.708 4 4 .708-.708z" opacity=".5" />
-                                            </svg>
-                                        </button>
-                                    </Link>
+                                    <LogoutButton />
                                 </li>
                             </ul>
                         </div>

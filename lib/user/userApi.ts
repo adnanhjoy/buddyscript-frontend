@@ -1,6 +1,7 @@
 "use server";
 import { getToken } from "../api/token";
 import { getBaseUrl } from "../api/baseUrl";
+import { getDecodedUserFromCookie } from "@/hook/useDecodedUserFromCookie";
 
 const getAllUserQuery = async (query?: string | number) => {
   const token = await getToken();
@@ -63,4 +64,10 @@ const updateUser = async ({
   return res.json();
 };
 
-export { getAllUserQuery, getSingleUser, updateUser };
+const getCurrentUser = async () => {
+  const decoded = await getDecodedUserFromCookie();
+  if (!decoded || typeof decoded === "string" || !decoded.email) return null;
+  return getSingleUser(decoded.email);
+};
+
+export { getAllUserQuery, getSingleUser, updateUser, getCurrentUser };

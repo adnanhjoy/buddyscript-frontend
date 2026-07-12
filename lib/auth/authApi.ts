@@ -33,7 +33,7 @@ const userSignupMutation = async (data: AuthData) => {
   if (result?.data) {
     (await cookies()).set({
       name: "auth",
-      value: result?.data,
+      value: result?.data.accessToken,
       httpOnly: true,
       secure: true,
       sameSite: "lax",
@@ -67,7 +67,7 @@ const userLoggedIn = async (data: AuthData) => {
   if (result?.data) {
     (await cookies()).set({
       name: "auth",
-      value: result?.data,
+      value: result?.data.accessToken,
       httpOnly: true,
       secure: true,
       sameSite: "lax",
