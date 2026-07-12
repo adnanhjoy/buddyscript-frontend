@@ -12,7 +12,7 @@ interface AuthData {
 // User signup
 const userSignupMutation = async (data: AuthData) => {
   const baseUrl = getBaseUrl();
-  const res = await fetch(`${baseUrl}/user/signup`, {
+  const res = await fetch(`${baseUrl}/user/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -23,6 +23,10 @@ const userSignupMutation = async (data: AuthData) => {
 
   const result = await res.json();
   if (!res.ok) {
+    if (result?.errors && Array.isArray(result.errors)) {
+      const messages = result.errors.map((e: { message: string }) => e.message);
+      throw new Error(messages.join("\n"));
+    }
     throw new Error(result?.message || "Failed to signup");
   }
 
