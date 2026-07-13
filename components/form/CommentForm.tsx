@@ -1,6 +1,6 @@
 "use client";
 
-import { createCommentMutation } from '@/lib/engagement/engagementApi';
+import { createCommentMutation, createCommentReplyMutation } from '@/lib/engagement/engagementApi';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
 import React, { useState, useRef } from 'react';
@@ -8,21 +8,34 @@ import { IComment } from '../card/CommentCard';
 
 interface CommentFormProps {
     postId: string;
+    commentId?: string;
     avatar?: string;
     author?: { firstName: string; lastName: string; avatar: string };
 }
 
-const CommentForm: React.FC<CommentFormProps> = ({ postId, avatar, author }) => {
+type CommentPayload = { text: string } & (
+    | { postId: string; commentId?: never }
+    | { postId?: never; commentId: string }
+);
+
+const CommentForm: React.FC<CommentFormProps> = ({ postId, commentId, avatar, author }) => {
+    const isReply = !!commentId;
+    const queryKey = isReply ? ['replies', commentId] : ['comments', postId];
     const [text, setText] = useState('');
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const queryClient = useQueryClient();
 
     const mutation = useMutation({
-        mutationFn: createCommentMutation,
+        mutationFn: (payload: CommentPayload) => {
+            if (payload.commentId) {
+                return createCommentReplyMutation({ text: payload.text, commentId: payload.commentId });
+            }
+            return createCommentMutation({ text: payload.text, postId: payload.postId! });
+        },
         onMutate: async ({ text: commentText }) => {
-            await queryClient.cancelQueries({ queryKey: ['comments', postId] });
+            await queryClient.cancelQueries({ queryKey });
 
-            const previousComments = queryClient.getQueryData(['comments', postId]);
+            const previousData = queryClient.getQueryData(queryKey);
 
             const optimisticComment: IComment = {
                 _id: `temp-${Date.now()}`,
@@ -36,7 +49,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ postId, avatar, author }) => 
                 isLiked: false,
             };
 
-            queryClient.setQueryData(['comments', postId], (old: { data: IComment[] }) => ({
+            queryClient.setQueryData(queryKey, (old: { data: IComment[] }) => ({
                 ...old,
                 data: [optimisticComment, ...(old?.data || [])],
             }));
@@ -46,15 +59,15 @@ const CommentForm: React.FC<CommentFormProps> = ({ postId, avatar, author }) => 
                 textareaRef.current.style.height = 'auto';
             }
 
-            return { previousComments };
+            return { previousData };
         },
         onError: (_err, _variables, context) => {
-            if (context?.previousComments) {
-                queryClient.setQueryData(['comments', postId], context.previousComments);
+            if (context?.previousData) {
+                queryClient.setQueryData(queryKey, context.previousData);
             }
         },
         onSettled: () => {
-            queryClient.invalidateQueries({ queryKey: ['comments', postId] });
+            queryClient.invalidateQueries({ queryKey });
         },
     });
 
@@ -62,7 +75,11 @@ const CommentForm: React.FC<CommentFormProps> = ({ postId, avatar, author }) => 
         e.preventDefault();
         if (!text.trim() || mutation.isPending) return;
 
-        mutation.mutate({ text: text.trim(), postId });
+        if (commentId) {
+            mutation.mutate({ text: text.trim(), commentId });
+        } else {
+            mutation.mutate({ text: text.trim(), postId });
+        }
     }
 
     function handleTextareaChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -109,9 +126,11 @@ const CommentForm: React.FC<CommentFormProps> = ({ postId, avatar, author }) => 
                         </>
                 }
             </div>
-            {mutation.isError && (
-                <div className="alert alert-danger py-2" role="alert">{mutation.error.message}</div>
-            )}
+            {
+                mutation?.isError && (
+                    <div className="alert alert-danger py-2" role="alert">{mutation.error.message}</div>
+                )
+            }
         </form>
     );
 };

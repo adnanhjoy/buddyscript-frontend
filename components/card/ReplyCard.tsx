@@ -3,14 +3,10 @@
 import { shortRelativeTime } from '@/utils/shortRelativeTime';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import CommentForm from '../form/CommentForm';
-import ReplyCard, { Ireply } from './ReplyCard';
-import { useQuery } from '@tanstack/react-query';
-import { getAllCommentsReplyQuery } from '@/lib/engagement/engagementApi';
+import React from 'react';
 
 
-export interface IComment {
+export interface Ireply {
     _id: string,
     text: string,
     author: { firstName: string; lastName: string, avatar: string },
@@ -22,17 +18,10 @@ export interface IComment {
     isLiked: boolean
 }
 
-const CommentCard: React.FC<{ comment: IComment; postId: string; avatar?: string }> = ({ comment, postId, avatar }) => {
-    const { _id, text, author, totalLikes, createdAt } = comment || {}
-    const [showCommentForm, setShowCommentForm] = useState(false);
-    const [showReplies, setShowReplies] = useState(false);
-    const { data: replies } = useQuery({
-        queryKey: ["replies", _id],
-        queryFn: () => getAllCommentsReplyQuery(_id),
-    });
+const ReplyCard: React.FC<{ reply: Ireply }> = ({ reply }) => {
+    const { text, author, totalLikes, createdAt } = reply || {}
 
     return (
-
         <div className="_comment_main">
             <div className="_comment_image">
                 <Link href="profile.html" className="_comment_image_link">
@@ -68,41 +57,15 @@ const CommentCard: React.FC<{ comment: IComment; postId: string; avatar?: string
                         <div className="_comment_reply_num">
                             <ul className="_comment_reply_list">
                                 <li><span>Like.</span></li>
-                                <li onClick={() => setShowCommentForm(!showCommentForm)}><span>Reply.</span></li>
                                 <li><span>Share</span></li>
                                 <li><span className="_time_link" style={{ whiteSpace: "nowrap" }}> .{shortRelativeTime(createdAt)}</span></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                {
-                    replies?.data?.length > 0 &&
-
-                    <ul className="_comment_reply_list">
-                        <li
-                            onClick={() => setShowReplies(!showReplies)}
-                        ><span>{showReplies ? "Hide" : "Show"} all {replies?.data?.length} reply.</span></li>
-                    </ul>
-                }
-                {
-                    showReplies &&
-                    replies?.data?.map((reply: Ireply) => (
-                        <ReplyCard reply={reply} key={reply?._id} />
-                    ))
-                }
-                {
-                    showCommentForm &&
-                    <div className="_feed_inner_comment_box">
-                        <CommentForm
-                            commentId={comment?._id}
-                            postId={postId}
-                            avatar={avatar}
-                        />
-                    </div>
-                }
             </div>
         </div>
     );
 };
 
-export default CommentCard;
+export default ReplyCard;

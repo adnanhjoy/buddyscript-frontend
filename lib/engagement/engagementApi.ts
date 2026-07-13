@@ -93,9 +93,65 @@ const createCommentMutation = async ({
   return res.json();
 };
 
+const createCommentReplyMutation = async ({
+  text,
+  commentId,
+}: {
+  text: string;
+  commentId: string;
+}) => {
+  const token = await getToken();
+  const baseUrl = getBaseUrl();
+  const res = await fetch(
+    `${baseUrl}/engagement/comments/${commentId}/replies`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+      body: JSON.stringify({ text }),
+    },
+  );
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({}));
+    throw new Error(error?.message || "Failed to create comment");
+  }
+
+  return res.json();
+};
+
+const getAllCommentsReplyQuery = async (
+  commentId?: string,
+  query?: string | number,
+) => {
+  const token = await getToken();
+  const baseUrl = getBaseUrl();
+  const res = await fetch(
+    `${baseUrl}/engagement/comments/${commentId}/replies?${query}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      cache: "no-store",
+    },
+  );
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({}));
+    throw new Error(error?.message || "Failed to fetch comments");
+  }
+
+  return res.json();
+};
+
 export {
   likePostMutation,
   likeUserPostQuery,
   getAllCommentsQuery,
   createCommentMutation,
+  getAllCommentsReplyQuery,
+  createCommentReplyMutation,
 };
