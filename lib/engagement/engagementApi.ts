@@ -2,6 +2,7 @@
 import { getToken } from "../api/token";
 import { getBaseUrl } from "../api/baseUrl";
 
+// comment 
 const getAllCommentsQuery = async (
   postId?: string,
   query?: string | number,
@@ -27,10 +28,10 @@ const getAllCommentsQuery = async (
 };
 
 const createCommentMutation = async ({
-  formData,
+  text,
   postId,
 }: {
-  formData: FormData;
+  text: string;
   postId: string;
 }) => {
   const token = await getToken();
@@ -39,9 +40,10 @@ const createCommentMutation = async ({
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
     cache: "no-store",
-    body: formData,
+    body: JSON.stringify({ text }),
   });
 
   if (!res.ok) {

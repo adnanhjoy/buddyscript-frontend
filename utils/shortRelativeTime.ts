@@ -1,4 +1,7 @@
 import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 export const shortRelativeTime = (date: string) => {
   const text = dayjs(date).fromNow(true);
