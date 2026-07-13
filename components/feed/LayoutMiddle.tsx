@@ -4,9 +4,13 @@ import React from 'react';
 import PostAreaBox from './PostAreaBox';
 import { getAllPostsQuery } from '@/lib/posts/postsApi';
 import PostCard, { IPost } from '../card/PostCard';
+import { getCurrentUser } from '@/lib/user/userApi';
 
 const LayoutMiddle: React.FC = async () => {
-    const posts = await getAllPostsQuery();
+    const [posts, user] = await Promise.all([
+        getAllPostsQuery(),
+        getCurrentUser(),
+    ]);
 
     return (
         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
@@ -165,7 +169,9 @@ const LayoutMiddle: React.FC = async () => {
                         </div>
                     </div>
                     {/* <!--For Mobile End--> */}
-                    <PostAreaBox />
+                    <PostAreaBox
+                        user={user?.data}
+                    />
                     {
                         posts?.data?.map((post: IPost) =>
                             <PostCard key={post._id} post={post} />

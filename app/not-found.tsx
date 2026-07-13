@@ -2,26 +2,96 @@ import Link from "next/link";
 
 export default function NotFoundPage() {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4">
-            <div className="relative flex flex-col items-center text-center">
-                <div className="pointer-events-none select-none text-[10rem] font-extrabold leading-none tracking-tighter sm:text-[12rem] md:text-[16rem]">
-                    <span className="bg-gradient-to-b from-foreground/10 to-foreground/5 bg-clip-text text-transparent">
+        <div
+            style={{
+                display: "flex",
+                minHeight: "100vh",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "0 1rem",
+            }}
+        >
+            <div
+                style={{
+                    position: "relative",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
+                }}
+            >
+                <div
+                    style={{
+                        pointerEvents: "none",
+                        userSelect: "none",
+                        fontSize: "16rem",
+                        fontWeight: 800,
+                        lineHeight: 1,
+                        letterSpacing: "-0.08em",
+                    }}
+                >
+                    <span
+                        style={{
+                            color: "#e5e7eb",
+                        }}
+                    >
                         404
                     </span>
                 </div>
 
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="space-y-4">
-                        <h1 className="text-lg font-semibold text-foreground sm:text-xl md:text-2xl">
+                <div
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "1rem",
+                        }}
+                    >
+                        <h1
+                            style={{
+                                fontSize: "2rem",
+                                fontWeight: 600,
+                                margin: 0,
+                            }}
+                        >
                             Page not found
                         </h1>
-                        <p className="mx-auto max-w-xs text-sm text-muted-foreground sm:max-w-sm">
+
+                        <p
+                            style={{
+                                maxWidth: "24rem",
+                                fontSize: "0.875rem",
+                                color: "#6b7280",
+                                margin: "0 auto",
+                            }}
+                        >
                             The page you are looking for doesn&apos;t exist or has been moved.
                         </p>
 
-
                         <Link href="/" aria-label="Home">
-                            <button type="button" >
+                            <button
+                                type="button"
+                                style={{
+                                    padding: "0.75rem 1.5rem",
+                                    border: "1px solid #d1d5db",
+                                    borderRadius: "0.5rem",
+                                    background: "#000",
+                                    color: "#fff",
+                                    cursor: "pointer",
+                                    fontSize: "0.875rem",
+                                    fontWeight: 500,
+                                }}
+                            >
                                 Back to Home
                             </button>
                         </Link>

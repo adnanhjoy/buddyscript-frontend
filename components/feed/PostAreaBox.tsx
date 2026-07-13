@@ -11,7 +11,7 @@ interface State {
 
 const initialState: State = { error: null, success: false };
 
-const PostAreaBox: React.FC = () => {
+const PostAreaBox: React.FC<{ user: { avatar: string } }> = ({ user }) => {
     const [content, setContent] = useState('');
     const [isPublic, setIsPublic] = useState(true);
     const [imageFile, setImageFile] = useState<File | null>(null);
@@ -91,7 +91,7 @@ const PostAreaBox: React.FC = () => {
             <form onSubmit={handleSubmit}>
                 <div className="_feed_inner_text_area_box">
                     <div className="_feed_inner_text_area_box_image">
-                        <Image height={1000} width={1000} src="/images/txt_img.png" alt="Image" className="_txt_img" />
+                        <Image height={1000} width={1000} src={user?.avatar} alt="Image" className="_txt_img" />
                     </div>
                     <div className="form-floating _feed_inner_text_area_box_form ">
                         <textarea

@@ -1,11 +1,19 @@
-import React from 'react';
+import React from "react";
 
-const loading: React.FC = () => {
+const Loading: React.FC = () => {
     return (
-        <div className='flex items-center justify-center h-screen w-full'>
-            <h1 className="text-muted-foreground">Loading...</h1>
+        <div
+            style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100vh",
+                width: "100%",
+            }}
+        >
+            <p style={{ color: "var(--muted-foreground)" }}>Loading...</p>
         </div>
     );
 };
 
-export default loading;
+export default Loading;

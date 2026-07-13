@@ -424,7 +424,7 @@ const DesktopMenu: React.FC = async () => {
                     </ul>
                     <div className="_header_nav_profile">
                         <div className="_header_nav_profile_image">
-                            <Image height={1000} width={1000} src="/images/profile.png" alt="Image" className="_nav_profile_img" />
+                            <Image height={1000} width={1000} src={user?.data?.avatar} alt="Image" className="_nav_profile_img" />
                         </div>
                         <div className="_header_nav_dropdown">
                             <p className="_header_nav_para">{user?.data?.firstName} {user?.data?.lastName}</p>
@@ -438,7 +438,7 @@ const DesktopMenu: React.FC = async () => {
                         <div id="_prfoile_drop" className="_nav_profile_dropdown _profile_dropdown">
                             <div className="_nav_profile_dropdown_info">
                                 <div className="_nav_profile_dropdown_image">
-                                    <Image height={1000} width={1000} src="/images/profile.png" alt="Image" className="_nav_drop_img" />
+                                    <Image height={1000} width={1000} src={user?.data?.avatar} alt="Image" className="_nav_drop_img" />
                                 </div>
                                 <div className="_nav_profile_dropdown_info_txt">
                                     <h4 className="_nav_dropdown_title">{user?.data?.firstName} {user?.data?.lastName}</h4>
