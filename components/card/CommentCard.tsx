@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import CommentForm from '../form/CommentForm';
+import CommentReaction from '../feed/CommentReaction';
 import ReplyCard, { Ireply } from './ReplyCard';
 import { useQuery } from '@tanstack/react-query';
 import { getAllCommentsReplyQuery } from '@/lib/engagement/engagementApi';
@@ -18,12 +19,11 @@ export interface IComment {
     replyCount: number,
     createdAt: string,
     updatedAt: string,
-    totalLikes: number,
     isLiked: boolean
 }
 
 const CommentCard: React.FC<{ comment: IComment; postId: string; avatar?: string }> = ({ comment, postId, avatar }) => {
-    const { _id, text, author, totalLikes, createdAt } = comment || {}
+    const { _id, text, author, likeCount, replyCount, createdAt } = comment || {}
     const [showCommentForm, setShowCommentForm] = useState(false);
     const [showReplies, setShowReplies] = useState(false);
     const { data: replies } = useQuery({
@@ -61,13 +61,18 @@ const CommentCard: React.FC<{ comment: IComment; postId: string; avatar?: string
                             </span>
                         </div>
                         <span className="_total">
-                            {totalLikes}
+                            {likeCount}
                         </span>
                     </div>
                     <div className="_comment_reply">
                         <div className="_comment_reply_num">
                             <ul className="_comment_reply_list">
-                                <li><span>Like.</span></li>
+                                <CommentReaction
+                                    id={_id}
+                                    type="comment"
+                                    parentCacheKey={postId}
+                                    isLiked={comment.isLiked}
+                                />
                                 <li onClick={() => setShowCommentForm(!showCommentForm)}><span>Reply.</span></li>
                                 <li><span>Share</span></li>
                                 <li><span className="_time_link" style={{ whiteSpace: "nowrap" }}> .{shortRelativeTime(createdAt)}</span></li>
@@ -76,22 +81,22 @@ const CommentCard: React.FC<{ comment: IComment; postId: string; avatar?: string
                     </div>
                 </div>
                 {
-                    replies?.data?.length > 0 &&
+                    replyCount > 0 &&
 
                     <ul className="_comment_reply_list">
                         <li
                             onClick={() => setShowReplies(!showReplies)}
-                        ><span>{showReplies ? "Hide" : "Show"} all {replies?.data?.length} reply.</span></li>
+                        ><span>{showReplies ? "Hide" : "Show"} all {replyCount} reply.</span></li>
                     </ul>
                 }
                 {
                     showReplies &&
                     replies?.data?.map((reply: Ireply) => (
-                        <ReplyCard reply={reply} key={reply?._id} />
+                        <ReplyCard reply={reply} key={reply?._id} parentCommentId={_id} />
                     ))
                 }
                 {
-                    showCommentForm &&
+                    (showCommentForm || showReplies) &&
                     <div className="_feed_inner_comment_box">
                         <CommentForm
                             commentId={comment?._id}

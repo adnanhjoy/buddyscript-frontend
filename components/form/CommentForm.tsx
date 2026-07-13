@@ -45,7 +45,6 @@ const CommentForm: React.FC<CommentFormProps> = ({ postId, commentId, avatar, au
                 replyCount: 0,
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString(),
-                totalLikes: 0,
                 isLiked: false,
             };
 

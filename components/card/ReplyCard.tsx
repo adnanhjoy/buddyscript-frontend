@@ -4,6 +4,7 @@ import { shortRelativeTime } from '@/utils/shortRelativeTime';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import CommentReaction from '../feed/CommentReaction';
 
 
 export interface Ireply {
@@ -14,12 +15,11 @@ export interface Ireply {
     replyCount: number,
     createdAt: string,
     updatedAt: string,
-    totalLikes: number,
     isLiked: boolean
 }
 
-const ReplyCard: React.FC<{ reply: Ireply }> = ({ reply }) => {
-    const { text, author, totalLikes, createdAt } = reply || {}
+const ReplyCard: React.FC<{ reply: Ireply; parentCommentId: string }> = ({ reply, parentCommentId }) => {
+    const { text, author, likeCount, createdAt } = reply || {}
 
     return (
         <div className="_comment_main">
@@ -50,13 +50,18 @@ const ReplyCard: React.FC<{ reply: Ireply }> = ({ reply }) => {
                             </span>
                         </div>
                         <span className="_total">
-                            {totalLikes}
+                            {likeCount}
                         </span>
                     </div>
                     <div className="_comment_reply">
                         <div className="_comment_reply_num">
                             <ul className="_comment_reply_list">
-                                <li><span>Like.</span></li>
+                                <CommentReaction
+                                    id={reply?._id}
+                                    type="reply"
+                                    parentCacheKey={parentCommentId}
+                                    isLiked={reply?.isLiked}
+                                />
                                 <li><span>Share</span></li>
                                 <li><span className="_time_link" style={{ whiteSpace: "nowrap" }}> .{shortRelativeTime(createdAt)}</span></li>
                             </ul>
