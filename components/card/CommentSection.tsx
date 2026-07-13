@@ -8,7 +8,7 @@ import CommentForm from "../form/CommentForm";
 interface CommentSectionProps {
     postId: string;
     initialComments: { data: IComment[] };
-    commentsCount: number;
+    commentCount: number;
     avatar?: string;
     author?: { firstName: string; lastName: string; avatar: string };
 }
@@ -16,7 +16,7 @@ interface CommentSectionProps {
 const CommentSection: React.FC<CommentSectionProps> = ({
     postId,
     initialComments,
-    commentsCount,
+    commentCount,
     avatar,
     author,
 }) => {
@@ -34,10 +34,10 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                 </div>
             </div>
             <div className="_timline_comment_main">
-                {commentsCount > 2 && (
+                {commentCount > 2 && (
                     <div className="_previous_comment">
                         <button type="button" className="_previous_comment_txt">
-                            View {commentsCount - 2} more comments
+                            View {commentCount - 2} more comments
                         </button>
                     </div>
                 )}
