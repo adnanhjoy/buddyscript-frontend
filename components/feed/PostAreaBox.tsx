@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import React, { useState, useRef, useActionState, startTransition } from 'react';
 import { createPostMutation } from '@/lib/posts/postsApi';
+import { useRouter } from 'next/navigation';
 
 interface State {
     error: string | null;
@@ -18,6 +19,7 @@ const PostAreaBox: React.FC<{ user: { avatar: string } }> = ({ user }) => {
     const [imagePreview, setImagePreview] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const router = useRouter();
 
     const [state, formAction, isPending] = useActionState<State, FormData>(
         async (_prev, formData) => {
@@ -30,6 +32,7 @@ const PostAreaBox: React.FC<{ user: { avatar: string } }> = ({ user }) => {
                 }
 
                 await createPostMutation({ formData: postFormData });
+                router.refresh();
                 setContent('');
                 setImageFile(null);
                 setImagePreview(null);

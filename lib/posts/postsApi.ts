@@ -1,6 +1,7 @@
 "use server";
 import { getToken } from "../api/token";
 import { getBaseUrl } from "../api/baseUrl";
+import { revalidateTag } from "next/cache";
 
 const getAllPostsQuery = async (query?: string | number) => {
   const token = await getToken();
@@ -9,7 +10,7 @@ const getAllPostsQuery = async (query?: string | number) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    cache: "no-store",
+    next: { tags: ["posts"] },
   });
 
   if (!res.ok) {
@@ -36,6 +37,8 @@ const createPostMutation = async ({ formData }: { formData: FormData }) => {
     const error = await res.json().catch(() => ({}));
     throw new Error(error?.message || "Failed to create post");
   }
+
+  revalidateTag("posts", "max");
 
   return res.json();
 };
