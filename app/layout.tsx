@@ -4,6 +4,7 @@ import "./styles/common.css";
 import "./styles/main.css";
 import "./styles/responsive.css";
 import QueryProvider from "@/components/providers/QueryProvider";
+import SessionProvider from "@/components/providers/SessionProvider";
 
 export const metadata: Metadata = {
   title: "Buddy Script",
@@ -24,7 +25,9 @@ export default function RootLayout({
       </head>
       <body>
         <QueryProvider>
-          {children}
+          <SessionProvider>
+            {children}
+          </SessionProvider>
         </QueryProvider>
       </body>
     </html>

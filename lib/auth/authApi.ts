@@ -1,6 +1,4 @@
-"use server";
-import { cookies } from "next/headers";
-import { getBaseUrl } from "../api/baseUrl";
+const API_BASE = "/api/v1";
 
 interface AuthData {
   firstName?: string;
@@ -9,15 +7,11 @@ interface AuthData {
   password?: string;
 }
 
-// User signup
 const userSignupMutation = async (data: AuthData) => {
-  const baseUrl = getBaseUrl();
-  const res = await fetch(`${baseUrl}/user/create`, {
+  const res = await fetch(`${API_BASE}/user/create`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    cache: "no-store",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
     body: JSON.stringify(data),
   });
 
@@ -30,70 +24,47 @@ const userSignupMutation = async (data: AuthData) => {
     throw new Error(result?.message || "Failed to signup");
   }
 
-  if (result?.data) {
-    (await cookies()).set({
-      name: "auth",
-      value: result?.data.accessToken,
-      httpOnly: true,
-      secure: true,
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7,
-    });
-  }
-
   return result;
 };
 
-// User and seller login
 const userLoggedIn = async (data: AuthData) => {
-  const baseUrl = getBaseUrl();
-  const res = await fetch(`${baseUrl}/auth/login`, {
+  const res = await fetch(`${API_BASE}/auth/login`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    cache: "no-store",
+    headers: { "Content-Type": "application/json" },
     credentials: "include",
     body: JSON.stringify(data),
   });
 
   const result = await res.json();
-
   if (!res.ok) {
     throw new Error(result?.message || "Failed to login");
-  }
-
-  if (result?.data) {
-    (await cookies()).set({
-      name: "auth",
-      value: result?.data.accessToken,
-      httpOnly: true,
-      secure: true,
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7,
-    });
   }
 
   return result;
 };
 
-// user logout
-const userLogout = async () => {
-  try {
-    (await cookies()).set({
-      name: "auth",
-      value: "",
-      path: "/",
-      expires: new Date(0),
-    });
-
-    return { success: true };
-  } catch (error) {
-    console.error("Logout error:", error);
-    throw error;
-  }
+const refreshAccessToken = async (): Promise<boolean> => {
+  const res = await fetch(`${API_BASE}/auth/refresh-token`, {
+    method: "POST",
+    credentials: "include",
+  });
+  return res.ok;
 };
 
-export { userSignupMutation, userLoggedIn, userLogout };
+const userLogout = async () => {
+  try {
+    await fetch(`${API_BASE}/auth/logout`, {
+      method: "POST",
+      credentials: "include",
+    });
+  } catch {}
+
+  return { success: true };
+};
+
+export {
+  userSignupMutation,
+  userLoggedIn,
+  userLogout,
+  refreshAccessToken,
+};
